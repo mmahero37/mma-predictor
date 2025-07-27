@@ -1,0 +1,18 @@
+{
+  "Lightweight": {
+    "champion": "Islam Makhachev",
+    "rankings": ["Charles Oliveira", "Dustin Poirier", "Justin Gaethje", "Beneil Dariush", "Michael Chandler", "Mateusz Gamrot", "Rafael Fiziev", "Arman Tsarukyan", "Jalin Turner", "Renato Moicano", "Rafael Dos Anjos", "Dan Hooker", "Grant Dawson", "Diego Ferreira", "Drew Dober"]
+  },
+  "Featherweight": {
+    "champion": "Alexander Volkanovski",
+    "rankings": ["Max Holloway", "Brian Ortega", "Yair Rodriguez", "Arnold Allen", "Josh Emmett", "Calvin Kattar", "Giga Chikadze", "Chan Sung Jung", "Movsar Evloev", "Bryce Mitchell", "Dan Ige", "Sodiq Yusuff", "Ilia Topuria", "Nathaniel Wood", "Alex Caceres"]
+  },
+  "Bantamweight": {
+    "champion": "Aljamain Sterling",
+    "rankings": ["Henry Cejudo", "Petr Yan", "Merab Dvalishvili", "Cory Sandhagen", "Rob Font", "Marlon Vera", "Dominick Cruz", "José Aldo", "Sean O'Malley", "Song Yadong", "Ricky Simon", "Raulian Paiva", "Pedro Munhoz", "Jack Shore", "Adrian Yanez"]
+  },
+  "Flyweight": {
+    "champion": "Brandon Moreno",
+    "rankings": ["Deiveson Figueiredo", "Alexandre Pantoja", "Kai Kara-France", "Askar Askarov", "Brandon Royval", "Matheus Nicolau", "Alex Perez", "Manel Kape", "David Dvorak", "Tim Elliott", "Tagir Ulanbekov", "Amir Albazi", "Jeff Molina", "Tyson Nam", "Matt Schnell"]
+  }
+}
