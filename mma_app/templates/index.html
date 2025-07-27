@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MMA Predictions</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .value-bet { background-color: #d4edda; }
+    </style>
+</head>
+<body>
+    <h1>MMA Predictions</h1>
+    {% if fights %}
+    <table>
+        <thead>
+            <tr>
+                <th>Event</th>
+                <th>Fighter A</th>
+                <th>Fighter B</th>
+                <th>Model Pick</th>
+                <th>Score A</th>
+                <th>Score B</th>
+                <th>Odds A</th>
+                <th>Odds B</th>
+                <th>Implied Prob A</th>
+                <th>Implied Prob B</th>
+                <th>Value Bet</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fight in fights %}
+            {% set event = fight.event %}
+            {% set pred = fight.prediction %}
+            {% set pick = pred['winner'] %}
+            {% set scores = pred['scores'] %}
+            {% set fighters = event['fighters'] %}
+            {% set fighter_a = fighters[0] %}
+            {% set fighter_b = fighters[1] %}
+            {% set odds = event.get('odds', {}) %}
+            {% set probs = event.get('probabilities', {}) %}
+            {% set odds_a = odds.get(fighter_a) %}
+            {% set odds_b = odds.get(fighter_b) %}
+            {% set prob_a = probs.get(fighter_a) %}
+            {% set prob_b = probs.get(fighter_b) %}
+            {% set favourite = fighter_a if (odds_a is not none and odds_b is not none and odds_a < odds_b) else fighter_b %}
+            {% set value_flag = pick != favourite %}
+            <tr class="{{ 'value-bet' if value_flag else '' }}">
+                <td>{{ event['home_team'] }} vs {{ event['away_team'] }}</td>
+                <td>{{ fighter_a }}</td>
+                <td>{{ fighter_b }}</td>
+                <td>{{ pick }}</td>
+                <td>{{ '%.2f' % scores.get(fighter_a, 0) }}</td>
+                <td>{{ '%.2f' % scores.get(fighter_b, 0) }}</td>
+                <td>{{ odds_a if odds_a is not none else '' }}</td>
+                <td>{{ odds_b if odds_b is not none else '' }}</td>
+                <td>{{ ('%.1f%%' % (prob_a*100)) if prob_a is not none else '' }}</td>
+                <td>{{ ('%.1f%%' % (prob_b*100)) if prob_b is not none else '' }}</td>
+                <td>{{ 'Yes' if value_flag else 'No' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No fights available or API key missing.</p>
+    {% endif %}
+</body>
+</html>
