@@ -57,3 +57,8 @@ async def api_predict(fighter_a: str, fighter_b: str):
     data_b = get_last_fights_and_age(fighter_b)
     result = predict_winner(fighter_a, data_a, fighter_b, data_b, get_fighter_rank)
     return result
+from fastapi.responses import HTMLResponse  # import at top if not already present
+
+@app.get("/ufc319", response_class=HTMLResponse)
+async def ufc319(request: Request):
+    return templates.TemplateResponse("ufc_319.html", {"request": request})
